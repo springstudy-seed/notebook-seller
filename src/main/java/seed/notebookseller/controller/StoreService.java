@@ -8,9 +8,12 @@ import seed.notebookseller.domain.StoreRepository;
 @Service
 @RequiredArgsConstructor
 public class StoreService {
+
     private final StoreRepository storeRepository;
     public Store createStore(Store store){
         Store save = storeRepository.save(store);
         return save;
     }
+
+
 }

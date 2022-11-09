@@ -20,4 +20,10 @@ public class Deposit {
     @JoinColumn(name = "STORE_ID")
     public Store store;
 
+
+    public Deposit(Long deposit, Notebook notebook, Store store) {
+        this.deposit = deposit;
+        this.notebook = notebook;
+        this.store = store;
+    }
 }
