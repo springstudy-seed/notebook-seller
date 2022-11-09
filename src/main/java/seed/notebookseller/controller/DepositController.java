@@ -3,16 +3,16 @@ package seed.notebookseller.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
-import seed.notebookseller.domain.Host;
+import seed.notebookseller.domain.Deposit;
 
 @RestController
 @RequiredArgsConstructor
-public class HostController{
-    private final HostService hostService;
-    @PostMapping("/api/host")
-    public boolean createHost(Host host){
-        hostService.createHost(host);
+public class DepositController {
+    private final DepositService depositService;
+
+    @PostMapping("/api/deposit")
+    public boolean createDeposit(Deposit deposit){
+        depositService.createDeposit(deposit);
         return true;
     }
-
 }

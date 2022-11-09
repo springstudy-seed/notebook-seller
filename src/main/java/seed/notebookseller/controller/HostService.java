@@ -9,9 +9,7 @@ import seed.notebookseller.domain.HostRepository;
 @RequiredArgsConstructor
 public class HostService {
     private final HostRepository hostRepository;
-
     public Host createHost(Host host) {
         return hostRepository.save(host);
     }
-
 }
