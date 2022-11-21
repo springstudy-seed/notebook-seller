@@ -16,6 +16,8 @@ public class Member {
     @Enumerated(EnumType.STRING)
     private Grade grade;
 
-    @ManyToOne
-    private Member member;
+    public Member(String name, Grade grade) {
+        this.name = name;
+        this.grade = grade;
+    }
 }
