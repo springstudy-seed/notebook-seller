@@ -13,4 +13,6 @@ public interface ItemRepository extends JpaRepository<Item,Long> {
     @Modifying
     @Query("delete from Item i where i.Id=:itemId")
     void delete(@Param("itemId")Long itemId);
+
+    Optional<Item> findByName(String name);
 }

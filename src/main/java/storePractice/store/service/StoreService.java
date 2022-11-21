@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import storePractice.store.domain.Store;
 import storePractice.store.domain.StoreRepository;
 
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor

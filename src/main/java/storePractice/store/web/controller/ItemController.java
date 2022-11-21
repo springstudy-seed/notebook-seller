@@ -1,13 +1,10 @@
 package storePractice.store.web.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import storePractice.store.domain.Item;
-import storePractice.store.domain.ItemRepository;
 import storePractice.store.service.ItemService;
 
-import java.util.List;
 
 
 @Controller

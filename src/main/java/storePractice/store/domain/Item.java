@@ -12,7 +12,7 @@ public class Item {
 
     @Id
     @GeneratedValue
-    private int Id;
+    private Long id;
     private String name;
     private int price;
 

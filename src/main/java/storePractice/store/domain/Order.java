@@ -11,7 +11,7 @@ public class Order {
 
     @Id
     @GeneratedValue
-    private int Id;
+    private Long Id;
 
     @OneToMany
     private List<OrderItem> orderItems;
