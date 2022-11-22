@@ -1,11 +1,13 @@
 package seed.notebookseller.domain;
 
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
+@NoArgsConstructor
 public class Store {
     @Id
     public Long id;

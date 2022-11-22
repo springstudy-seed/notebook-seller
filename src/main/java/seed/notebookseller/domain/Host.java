@@ -10,7 +10,7 @@ public class Host {
     @Id
     public Long id;
 
-    @OneToOne(mappedBy = "STORE_ID")
+    @OneToOne(mappedBy = "id")
     public Store store;
 
     public String name;

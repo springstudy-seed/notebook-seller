@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import seed.notebookseller.domain.*;
 
-import java.util.Optional;
+import javax.transaction.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -13,7 +13,7 @@ public class DepositService {
     private final StoreRepository storeRepository;
     private final NotebookRepository notebookRepository;
 
-    public Deposit createDeposit(DepositDto depositDto){
+    public Deposit createDeposit(DepositDto depositDto) {
 
         Store storeStore = storeRepository.findById(depositDto.getStore_id()).get();
 
@@ -23,4 +23,21 @@ public class DepositService {
 
         return depositRepository.save(deposit);
     }
+
+    @Transactional
+    public Long buyNoteBookByCustomer(Long depositId, Long buyCount) {
+        Deposit deposit = depositRepository.findById(depositId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 제고는 없음"));
+
+        return deposit.minusDeposit(buyCount);
+    }
+
+    @Transactional
+    public Long buyNoteBookByHost(Long depositId, Long buyCount) {
+        Deposit deposit = depositRepository.findById(depositId).get();
+
+        return deposit.plusDeposit(buyCount);
+    }
+
+
 }
