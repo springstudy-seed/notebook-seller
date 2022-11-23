@@ -2,6 +2,7 @@ package seed.notebookseller.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
@@ -13,6 +14,7 @@ import javax.persistence.ManyToOne;
 @NoArgsConstructor
 @Builder
 @AllArgsConstructor
+@Getter
 public class Deposit {
     @Id
     public Long id;
