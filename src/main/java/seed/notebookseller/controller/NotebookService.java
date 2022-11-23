@@ -10,6 +10,6 @@ public class NotebookService {
     private final NotebookRepository notebookRepository;
 
     public void createNotebook(NoteBookDto noteBookDto) {
-        notebookRepository.save(noteBookDto.toEntity());
+        notebookRepository.save(noteBookDto.toEntity(noteBookDto));
     }
 }

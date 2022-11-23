@@ -8,8 +8,8 @@ import seed.notebookseller.domain.Deposit;
 @Builder
 public class DepositDto {
     private Long deposit;
-    private Long store_id;
-    private Long notebook_id;
+    private Long storeId;
+    private Long notebookId;
 
 
     public Deposit toEntity(Long deposit){

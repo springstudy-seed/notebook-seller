@@ -15,9 +15,10 @@ public class DepositService {
 
     public Deposit createDeposit(DepositDto depositDto) {
 
-        Store storeStore = storeRepository.findById(depositDto.getStore_id()).get();
+        Store storeStore = storeRepository.findById(depositDto.getStoreId())
+                .orElseThrow(()->new RuntimeException("가게 없음"));
 
-        Notebook notebookNotebook = notebookRepository.findById(depositDto.getNotebook_id()).get();
+        Notebook notebookNotebook = notebookRepository.findById(depositDto.getNotebookId()).get();
 
         Deposit deposit = new Deposit(depositDto.getDeposit(), notebookNotebook, storeStore);
 

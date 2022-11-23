@@ -13,6 +13,7 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @Getter
+@AllArgsConstructor
 public class Store {
     @Id
     private Long id;

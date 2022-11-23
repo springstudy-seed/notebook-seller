@@ -12,7 +12,6 @@ import javax.persistence.ManyToOne;
 
 @Entity
 @NoArgsConstructor
-@Builder
 @AllArgsConstructor
 @Getter
 public class Deposit {
@@ -29,7 +28,7 @@ public class Deposit {
     @JoinColumn(name = "STORE_ID")
     public Store store;
 
-
+    @Builder
     public Deposit(Long deposit, Notebook notebook, Store store) {
         this.deposit = deposit;
         this.notebook = notebook;
