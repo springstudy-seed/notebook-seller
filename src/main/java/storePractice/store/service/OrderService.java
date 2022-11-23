@@ -3,7 +3,7 @@ package storePractice.store.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import storePractice.store.domain.*;
-import storePractice.store.web.controller.OrderItemRepository;
+import storePractice.store.domain.OrderItemRepository;
 
 import java.util.List;
 

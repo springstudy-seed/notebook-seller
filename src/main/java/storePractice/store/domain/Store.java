@@ -13,6 +13,7 @@ public class Store {
     @Id
     @GeneratedValue
     private int Id;
+
     private String name;
 
     @Embedded

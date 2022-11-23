@@ -6,10 +6,14 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 
 @Repository
 public interface StoreRepository extends JpaRepository<Store, Long> {
     @Modifying
     @Query("delete from Store s where s.Id=:storeId")
     void delete(@Param("storeId")Long storeId);
+
+    List<Store> findByName(String name);
 }

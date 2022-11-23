@@ -17,7 +17,4 @@ public class OrderController {
         Order order = orderService.createOrder(name);
         return new ResponseEntity<>(order, HttpStatus.OK);
     }
-
-
 }
-
