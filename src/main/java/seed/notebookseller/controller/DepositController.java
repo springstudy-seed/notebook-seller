@@ -19,13 +19,8 @@ public class DepositController {
     public Long buyNotebookByCustomer(@PathVariable("id") Long depositId, Long countBuyNotebook){
         return depositService.buyNoteBookByCustomer(depositId, countBuyNotebook);
     }
-    @PatchMapping("/api/deposits/host/{id}")
+    @PatchMapping("/api/deposits/{id}/host")
     public Long buyNotebookByHost(@PathVariable("id") Long depositId, Long countBuyNotebook){
         return depositService.buyNoteBookByHost(depositId, countBuyNotebook);
     }
-
-
-
-
-
 }
