@@ -13,6 +13,7 @@ public class DepositService {
     private final StoreRepository storeRepository;
     private final NotebookRepository notebookRepository;
 
+    @Transactional
     public Deposit createDeposit(DepositDto depositDto) {
 
         Store storeStore = storeRepository.findById(depositDto.getStoreId())
@@ -20,7 +21,7 @@ public class DepositService {
 
         Notebook notebookNotebook = notebookRepository.findById(depositDto.getNotebookId()).get();
 
-        Deposit deposit = new Deposit(depositDto.getDeposit(), notebookNotebook, storeStore);
+        Deposit deposit=depositDto.toEntity(storeStore,notebookNotebook);
 
         return depositRepository.save(deposit);
     }

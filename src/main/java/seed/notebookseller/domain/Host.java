@@ -6,15 +6,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 @Entity
-public class Host {
+public class Host{
     @Id
     @GeneratedValue
     public Long id;
 
-    @OneToOne
-    public Store store;
-
     public String name;
 
-    public boolean type;
+    @OneToOne
+    public Store store;
 }
