@@ -15,9 +15,8 @@ import java.util.List;
 public class StoreController {
     private final StoreService storeService;
     @PostMapping("/api/store")
-    public boolean createStore(Store store){
-        storeService.createStore(store);
-        return true;
+    public Store createStore(Store store){
+        return storeService.createStore(store);
     }
 
     @GetMapping("/api/stores/{id}/deposits")

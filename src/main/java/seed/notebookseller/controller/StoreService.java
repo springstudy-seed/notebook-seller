@@ -15,6 +15,7 @@ public class StoreService {
 
     private final StoreRepository storeRepository;
 
+    @Transactional
     public Store createStore(Store store) {
         Store save = storeRepository.save(store);
         return save;

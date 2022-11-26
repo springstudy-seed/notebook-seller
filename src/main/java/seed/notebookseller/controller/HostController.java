@@ -10,9 +10,9 @@ import seed.notebookseller.domain.Host;
 public class HostController{
     private final HostService hostService;
     @PostMapping("/api/host")
-    public boolean createHost(Host host){
-        hostService.createHost(host);
-        return true;
+    public Host createHost(Host host){
+        host.validateName(host.name);
+        return hostService.createHost(host);
     }
 
 }
