@@ -1,6 +1,7 @@
 package seed.notebookseller.domain;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @AllArgsConstructor
+@Builder
 public class Store {
     @Id
     @GeneratedValue
@@ -20,9 +22,4 @@ public class Store {
 
     @OneToMany(mappedBy = "store",fetch= FetchType.EAGER)
     private List<Deposit> depositList;
-
-    public Store(String location, String name) {
-        this.location = location;
-        this.name = name;
-    }
 }

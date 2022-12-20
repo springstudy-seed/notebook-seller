@@ -1,6 +1,7 @@
 package seed.notebookseller.controller;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import seed.notebookseller.domain.*;
 
@@ -11,14 +12,22 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class StoreService {
 
     private final StoreRepository storeRepository;
 
     @Transactional
     public Store createStore(Store store) {
-        Store save = storeRepository.save(store);
-        return save;
+        try{
+            log.info(store.getName());
+            Store saveStore = storeRepository.save(store);
+            log.info(saveStore.getName());
+            return saveStore;
+        }catch (NullPointerException e){
+            log.info("saveStore이 null입니다");
+            throw new IllegalArgumentException("saveStore이 null입니다");
+        }
     }
 
     @Transactional

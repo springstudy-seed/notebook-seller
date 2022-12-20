@@ -1,10 +1,7 @@
 package seed.notebookseller.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import seed.notebookseller.domain.DepositByStoreDto;
 import seed.notebookseller.domain.Store;
 
@@ -15,7 +12,7 @@ import java.util.List;
 public class StoreController {
     private final StoreService storeService;
     @PostMapping("/api/store")
-    public Store createStore(Store store){
+    public Store createStore(@RequestBody Store store){
         return storeService.createStore(store);
     }
 

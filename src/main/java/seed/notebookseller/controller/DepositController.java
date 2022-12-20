@@ -10,7 +10,7 @@ public class DepositController {
     private final DepositService depositService;
 
     @PostMapping("/api/deposits")
-    public boolean createDeposit(DepositDto depositDto){
+    public boolean createDeposit(@RequestBody DepositDto depositDto){
         depositService.createDeposit(depositDto);
         return true;
     }

@@ -10,7 +10,7 @@ import seed.notebookseller.domain.Notebook;
 public class NotebookController {
     private final NotebookService notebookService;
     @PostMapping("/api/insert/")
-    public Notebook insert(NoteBookDto noteBookDto){
+    public Notebook insert(@RequestBody NoteBookDto noteBookDto){
         return notebookService.createNotebook(noteBookDto);
     }
 }
