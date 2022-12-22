@@ -1,7 +1,9 @@
 package seed.notebookseller.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.hibernate.EntityMode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import seed.notebookseller.domain.Deposit;
@@ -14,22 +16,24 @@ public class DepositController {
     private final DepositService depositService;
 
     @PostMapping("/api/deposits")
-    public ResponseEntity<Deposit> createDeposit(@RequestBody DepositDto depositDto){
-        Deposit createdDeposit=depositService.createDeposit(depositDto);
-        URI uri=ServletUriComponentsBuilder.fromCurrentRequest()
-                        .path("{id}/")
-                        .buildAndExpand(createdDeposit.getId())
-                        .toUri();
+    public ResponseEntity<Deposit> createDeposit(@RequestBody DepositDto depositDto) {
+        Deposit createdDeposit = depositService.createDeposit(depositDto);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("{id}/")
+                .buildAndExpand(createdDeposit.getId())
+                .toUri();
         return ResponseEntity.created(uri)
                 .body(createdDeposit);
     }
 
     @PatchMapping("/api/deposits/{id}")
-    public Long buyNotebookByCustomer(@PathVariable("id") Long depositId, Long countBuyNotebook){
-        return depositService.buyNoteBookByCustomer(depositId, countBuyNotebook);
+    public Long buyNotebookByCustomer(@PathVariable("id") Long depositId, Long countBuyNotebook) {
+        Long restDeposit = depositService.buyNoteBookByCustomer(depositId, countBuyNotebook);
+        return restDeposit;
     }
+
     @PatchMapping("/api/deposits/{id}/host")
-    public Long buyNotebookByHost(@PathVariable("id") Long depositId, Long countBuyNotebook){
+    public Long buyNotebookByHost(@PathVariable("id") Long depositId, Long countBuyNotebook) {
         return depositService.buyNoteBookByHost(depositId, countBuyNotebook);
     }
 }
