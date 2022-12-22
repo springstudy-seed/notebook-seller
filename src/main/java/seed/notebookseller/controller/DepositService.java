@@ -9,6 +9,8 @@ import javax.transaction.Transactional;
 @Service
 @RequiredArgsConstructor
 public class DepositService {
+    private static final String NOT_FOUND_STORE="해당하는 가게가 없습니다";
+    private static final String NOT_FOUND_NOTEBOOK="해당하는 노트북이 없습니다";
     private final DepositRepository depositRepository;
     private final StoreRepository storeRepository;
     private final NotebookRepository notebookRepository;
@@ -17,12 +19,12 @@ public class DepositService {
     public Deposit createDeposit(DepositDto depositDto) {
 
         Store storeStore = storeRepository.findById(depositDto.getStoreId())
-                .orElseThrow(()->new RuntimeException("가게 없음"));
+                .orElseThrow(()->new RuntimeException(NOT_FOUND_STORE));
 
-        Notebook notebookNotebook = notebookRepository.findById(depositDto.getNotebookId()).get();
+        Notebook notebookNotebook = notebookRepository.findById(depositDto.getNotebookId())
+                .orElseThrow(()-> new IllegalArgumentException(NOT_FOUND_NOTEBOOK));
 
-        Deposit deposit=depositDto.toEntity(storeStore,notebookNotebook);
-
+        Deposit deposit=depositDto.toEntity(storeStore,notebookNotebook,depositDto);
         return depositRepository.save(deposit);
     }
 

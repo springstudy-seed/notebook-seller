@@ -13,12 +13,13 @@ public class DepositDto {
 
     private Long storeId;
     private Long notebookId;
+    private Long depositCount;
 
-
-    public Deposit toEntity(Store store, Notebook notebook){
+    public Deposit toEntity(Store store, Notebook notebook,DepositDto depositDto){
         return Deposit.builder()
                 .store(store)
                 .notebook(notebook)
+                .deposit(depositDto.getDepositCount())
                 .build();
     }
 }
