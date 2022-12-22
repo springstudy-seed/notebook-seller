@@ -1,13 +1,12 @@
 package storePractice.store.web.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import storePractice.store.domain.Store;
-import storePractice.store.service.StoreService;
+import storePractice.store.service.StoreServiceImpl;
 
 import java.util.List;
 
@@ -16,11 +15,11 @@ import java.util.List;
 @RequiredArgsConstructor
 public class StoreController {
 
-    private StoreService storeService;
+    private StoreServiceImpl storeService;
 
     @DeleteMapping(value = "/api/store/{store}")
-    public void delete(@PathVariable Long storeId){
-        storeService.deleteStore(storeId);
+    public void delete(@PathVariable String name){
+        storeService.deleteStore(name);
     }
 
 

@@ -5,14 +5,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import storePractice.store.domain.Item;
-import storePractice.store.service.ItemService;
+import storePractice.store.service.ItemServiceImpl;
 
 import java.util.List;
 
 
 @Controller
 public class ItemController {
-    private ItemService itemService;
+    private ItemServiceImpl itemService;
 
     @DeleteMapping(value = "api/items/{itemId}}")
     public void delete(@PathVariable Long itemId) {

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import storePractice.store.domain.Member;
 import storePractice.store.service.MemberCreateDto;
 import storePractice.store.service.MemberService;
+import storePractice.store.service.MemberServiceImpl;
 
 @RequiredArgsConstructor
 @RestController
