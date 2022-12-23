@@ -1,27 +1,29 @@
 package storePractice.store.web.controller;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import storePractice.store.domain.Item;
+import org.springframework.web.bind.annotation.*;
 import storePractice.store.domain.Store;
-import storePractice.store.service.ItemService;
-import storePractice.store.service.StoreService;
+import storePractice.store.service.StoreServiceImpl;
+
+import java.util.List;
+
 
 @Controller
+@RequiredArgsConstructor
 public class StoreController {
 
-    private StoreService storeService;
+    private StoreServiceImpl storeService;
 
-    @GetMapping(value = "api/stores/{store}")
-    public void delete(@PathVariable Long storeId){
-        storeService.deleteStore(storeId);
+    @DeleteMapping(value = "/api/store/{store}")
+    public void delete(@PathVariable String name){
+        storeService.deleteStore(name);
     }
 
 
-    @PostMapping(value = "api/stores")
+    @PostMapping(value = "/api/store")
     public void save(@RequestBody Store store){
         Store.builder()
                 .Id(store.getId())
@@ -33,4 +35,13 @@ public class StoreController {
 
         storeService.saveStore(store);
     }
+    @GetMapping("/api/store/")
+    public ResponseEntity<List<Store>> findByName(String name){
+        List<Store> stores = storeService.findByName(name);
+        if(stores.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(stores, HttpStatus.OK);
+    }
+
 }

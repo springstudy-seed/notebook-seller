@@ -1,22 +1,17 @@
 package storePractice.store.service;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 import storePractice.store.domain.Item;
-import storePractice.store.domain.ItemRepository;
 
-import java.util.Optional;
+import java.util.List;
 
-@Service
-@RequiredArgsConstructor
-public class ItemService {
-    private final ItemRepository itemRepository;
+public interface ItemService {
+    public void deleteItem(Long itemId);
 
-    public Item createItem(Item item){
-        return itemRepository.save(item);
-    }
+    public Item createItem(Item item);
 
-    public void deleteItem(Long itemId){
-        itemRepository.delete(itemId);
-    }
+    public List<Item> getByName(String name);
+
+    public List<Item> getByType(String type);
+
+    public List<Item> getByBetweenPrice(Integer minPrice, Integer maxPrice);
 }
